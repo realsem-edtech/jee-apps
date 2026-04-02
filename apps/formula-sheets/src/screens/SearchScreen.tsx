@@ -65,8 +65,8 @@ export default function SearchScreen({ navigation }: Props) {
               <Text style={styles.formulaName}>{item.name}</Text>
               <Text style={styles.chapterId}>{item.chapterId.replace(/-/g, ' ')}</Text>
               <View style={styles.tagsRow}>
-                {item.tags.slice(0, 3).map((tag) => (
-                  <View key={tag} style={styles.tag}>
+                {item.tags.slice(0, 3).map((tag, index) => (
+                  <View key={`${tag}-${index}`} style={styles.tag}>
                     <Text style={styles.tagText}>{tag}</Text>
                   </View>
                 ))}
