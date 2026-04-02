@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useTheme, ThemePreference } from '../utils/ThemeContext';
 import { spacing, fontSize } from '../utils/theme';
+import { trackThemeChanged } from '../utils/analytics';
 
 const options: { label: string; value: ThemePreference }[] = [
   { label: 'System Default', value: 'system' },
@@ -29,7 +30,10 @@ export default function SettingsScreen() {
               styles.option,
               { borderBottomColor: colors.border },
             ]}
-            onPress={() => setPreference(opt.value)}
+            onPress={() => {
+              setPreference(opt.value);
+              trackThemeChanged(opt.value);
+            }}
           >
             <Text style={[styles.optionText, { color: colors.text }]}>
               {opt.label}

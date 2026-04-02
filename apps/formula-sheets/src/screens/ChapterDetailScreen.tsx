@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -11,12 +11,17 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 import { getFormulasByChapter } from '../data/contentLayer';
 import { colors, spacing, fontSize } from '../utils/theme';
+import { trackChapterViewed } from '../utils/analytics';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChapterDetail'>;
 
 export default function ChapterDetailScreen({ route, navigation }: Props) {
   const { chapterId, chapterName } = route.params;
   const formulaList = getFormulasByChapter(chapterId);
+
+  useEffect(() => {
+    trackChapterViewed(chapterName);
+  }, [chapterName]);
 
   return (
     <SafeAreaView style={styles.container}>
