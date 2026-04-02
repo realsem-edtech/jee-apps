@@ -38,7 +38,7 @@ export const biomoleculesFormulas: Formula[] = [
     id: 'peptide-bond',
     chapterId: 'biomolecules',
     name: 'Peptide Bond Formation',
-    equation: 'R_1\\text{-}CO\\text{-}NH\\text{-}R_2 + H_2O \\quad (\\text{condensation})',
+    equation: 'H_2N\\text{-}CHR_1\\text{-}COOH + H_2N\\text{-}CHR_2\\text{-}COOH \\rightarrow R_1\\text{-}CO\\text{-}NH\\text{-}R_2 + H_2O',
     contentType: 'latex',
     variables: {
       '\\text{CO-NH}': 'Peptide bond (amide linkage)',

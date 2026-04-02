@@ -61,9 +61,9 @@ export const alcoholsPhenolsEthersFormulas: Formula[] = [
       'H_2SO_4': 'Concentrated sulfuric acid (catalyst)',
     },
     useCases: [
-      '3° alcohols dehydrate easiest (lowest temperature: 443K)',
+      '3° alcohols dehydrate easiest (lowest temperature: ~370K)',
       'Zaitsev product is major (most substituted alkene)',
-      '1° alcohols need highest temperature (443K)',
+      '1° alcohols need highest temperature (~443K)',
     ],
     tags: ['organic', 'alcohols', 'dehydration', 'elimination'],
   },

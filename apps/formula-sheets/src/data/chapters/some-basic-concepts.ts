@@ -110,7 +110,7 @@ export const someBasicConceptsFormulas: Formula[] = [
     tags: ['empirical formula', 'molecular formula', 'stoichiometry'],
   },
   {
-    id: 'limiting-reagent',
+    id: 'percentage-yield',
     chapterId: 'some-basic-concepts',
     name: 'Percentage Yield',
     equation: '\\text{\\% Yield} = \\frac{\\text{Actual Yield}}{\\text{Theoretical Yield}} \\times 100',

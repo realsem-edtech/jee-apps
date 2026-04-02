@@ -19,6 +19,8 @@ export const chapters: Chapter[] = [
   // Class 11 - Organic Chemistry
   { id: 'organic-basics', name: 'Organic Chemistry: Some Basic Principles', subject: 'organic', order: 12 },
   { id: 'hydrocarbons', name: 'Hydrocarbons', subject: 'organic', order: 13 },
+
+  // Class 11 - Environmental (treated as inorganic/general)
   { id: 'environmental-chemistry', name: 'Environmental Chemistry', subject: 'inorganic', order: 14 },
 
   // Class 12 - Physical Chemistry

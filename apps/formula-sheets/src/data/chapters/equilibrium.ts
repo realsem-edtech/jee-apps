@@ -70,7 +70,7 @@ export const equilibriumFormulas: Formula[] = [
     },
     useCases: [
       'Calculating [OH⁻] when [H⁺] is known and vice versa',
-      'Determining pH of neutral solution at different temperatures',
+      'Determining pH of neutral solution (Kw varies with temperature)',
       'Relating pH and pOH',
     ],
     tags: ['equilibrium', 'ionic product', 'water', 'Kw'],

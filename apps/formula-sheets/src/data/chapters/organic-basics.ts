@@ -77,7 +77,7 @@ export const organicBasicsFormulas: Formula[] = [
     id: 'homolytic-heterolytic',
     chapterId: 'organic-basics',
     name: 'Bond Fission Types',
-    equation: 'A{:}B \\rightarrow A^+ + B^- \\quad (\\text{heterolytic})',
+    equation: 'A{:}B \\rightarrow A^+ + B^- \\text{ (heterolytic)}; \\quad A{:}B \\rightarrow A^\\bullet + B^\\bullet \\text{ (homolytic)}',
     contentType: 'latex',
     variables: {
       '\\text{heterolytic}': 'Unequal splitting → ions (polar solvents)',

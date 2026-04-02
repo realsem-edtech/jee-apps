@@ -9,6 +9,8 @@ export const isolationOfElementsFormulas: Formula[] = [
     contentType: 'latex',
     variables: {
       '\\Delta G': 'Gibbs energy of oxide formation',
+      '\\Delta H': 'Enthalpy change of reaction',
+      '\\Delta S': 'Entropy change of reaction',
       'T': 'Temperature',
     },
     useCases: [

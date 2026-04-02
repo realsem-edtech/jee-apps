@@ -158,7 +158,7 @@ export const thermodynamicsFormulas: Formula[] = [
     equation: 'w = -nRT \\ln \\frac{V_2}{V_1}',
     contentType: 'latex',
     variables: {
-      'w': 'Work done by the system',
+      'w': 'Work done on the system (negative for expansion)',
       'n': 'Number of moles',
       'R': 'Gas constant',
       'T': 'Temperature (constant)',
