@@ -11,6 +11,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 import { getFormulasByChapter } from '../data/contentLayer';
 import { colors, spacing, fontSize } from '../utils/theme';
+import AdBanner from '../components/AdBanner';
 import { trackChapterViewed } from '../utils/analytics';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChapterDetail'>;
@@ -53,6 +54,7 @@ export default function ChapterDetailScreen({ route, navigation }: Props) {
           </TouchableOpacity>
         )}
       />
+      <AdBanner />
     </SafeAreaView>
   );
 }
