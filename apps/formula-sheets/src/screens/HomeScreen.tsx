@@ -28,8 +28,18 @@ export default function HomeScreen({ navigation }: Props) {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>JEE Formula Sheets</Text>
-        <Text style={styles.headerSubtitle}>RealSem</Text>
+        <View style={styles.headerRow}>
+          <View>
+            <Text style={styles.headerTitle}>JEE Formula Sheets</Text>
+            <Text style={styles.headerSubtitle}>RealSem</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.bookmarkHeaderBtn}
+            onPress={() => navigation.navigate('Bookmarks')}
+          >
+            <Text style={styles.bookmarkHeaderIcon}>{'\u2606'}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <FlatList
         data={chapterList}
@@ -75,6 +85,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.xl,
     paddingBottom: spacing.lg,
+  },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  bookmarkHeaderBtn: {
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    borderRadius: 8,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+  },
+  bookmarkHeaderIcon: {
+    color: '#FFFFFF',
+    fontSize: 22,
   },
   headerTitle: {
     fontSize: fontSize.xxl,

@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   ScrollView,
   StyleSheet,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import MathView from 'react-native-math-view';
 import { RootStackParamList } from '../types';
 import { getFormulaById } from '../data/contentLayer';
+import { isBookmarked, toggleBookmark } from '../utils/bookmarks';
 import { colors, spacing, fontSize } from '../utils/theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
@@ -17,6 +19,16 @@ type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
 export default function FormulaDetailScreen({ route }: Props) {
   const { formulaId } = route.params;
   const formula = getFormulaById(formulaId);
+  const [bookmarked, setBookmarked] = useState(false);
+
+  useEffect(() => {
+    isBookmarked(formulaId).then(setBookmarked);
+  }, [formulaId]);
+
+  async function handleToggleBookmark() {
+    const newState = await toggleBookmark(formulaId);
+    setBookmarked(newState);
+  }
 
   if (!formula) {
     return (
@@ -29,7 +41,12 @@ export default function FormulaDetailScreen({ route }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.formulaName}>{formula.name}</Text>
+        <View style={styles.titleRow}>
+          <Text style={[styles.formulaName, { flex: 1 }]}>{formula.name}</Text>
+          <TouchableOpacity onPress={handleToggleBookmark} style={styles.bookmarkButton}>
+            <Text style={styles.bookmarkIcon}>{bookmarked ? '\u2605' : '\u2606'}</Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.equationCard}>
           <MathView
@@ -88,11 +105,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: spacing.xl,
   },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: spacing.lg,
+  },
   formulaName: {
     fontSize: fontSize.xl,
     fontWeight: '700',
     color: colors.text,
-    marginBottom: spacing.lg,
+  },
+  bookmarkButton: {
+    padding: spacing.sm,
+    marginLeft: spacing.sm,
+  },
+  bookmarkIcon: {
+    fontSize: 28,
+    color: colors.accent,
   },
   equationCard: {
     backgroundColor: colors.surface,

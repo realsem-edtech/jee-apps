@@ -5,6 +5,7 @@ import { RootStackParamList } from './src/types';
 import HomeScreen from './src/screens/HomeScreen';
 import ChapterDetailScreen from './src/screens/ChapterDetailScreen';
 import FormulaDetailScreen from './src/screens/FormulaDetailScreen';
+import BookmarksScreen from './src/screens/BookmarksScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -37,6 +38,13 @@ export default function App() {
           component={FormulaDetailScreen}
           options={{
             title: 'Formula',
+          }}
+        />
+        <Stack.Screen
+          name="Bookmarks"
+          component={BookmarksScreen}
+          options={{
+            title: 'Bookmarks',
           }}
         />
       </Stack.Navigator>
