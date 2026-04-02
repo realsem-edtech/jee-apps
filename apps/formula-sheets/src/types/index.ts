@@ -25,4 +25,5 @@ export type RootStackParamList = {
   FormulaDetail: { formulaId: string };
   Search: undefined;
   Bookmarks: undefined;
+  Settings: undefined;
 };

@@ -11,11 +11,13 @@ import {
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 import { getChapters, getFormulaCountByChapter } from '../data/contentLayer';
-import { colors, spacing, fontSize } from '../utils/theme';
+import { useTheme } from '../utils/ThemeContext';
+import { spacing, fontSize } from '../utils/theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function HomeScreen({ navigation }: Props) {
+  const { colors } = useTheme();
   const chapterList = getChapters();
 
   const subjectLabel: Record<string, string> = {
@@ -25,9 +27,9 @@ export default function HomeScreen({ navigation }: Props) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-      <View style={styles.header}>
+      <View style={[styles.header, { backgroundColor: colors.primary }]}>
         <View style={styles.headerRow}>
           <View>
             <Text style={styles.headerTitle}>JEE Formula Sheets</Text>
@@ -46,6 +48,12 @@ export default function HomeScreen({ navigation }: Props) {
             >
               <Text style={styles.headerBtnIcon}>{'\u2606'}</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.headerBtn}
+              onPress={() => navigation.navigate('Settings')}
+            >
+              <Text style={styles.headerBtnIcon}>{'\u2699'}</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -57,7 +65,7 @@ export default function HomeScreen({ navigation }: Props) {
           const count = getFormulaCountByChapter(item.id);
           return (
             <TouchableOpacity
-              style={styles.card}
+              style={[styles.card, { backgroundColor: colors.surface }]}
               activeOpacity={0.7}
               onPress={() =>
                 navigation.navigate('ChapterDetail', {
@@ -67,12 +75,12 @@ export default function HomeScreen({ navigation }: Props) {
               }
             >
               <View style={styles.cardContent}>
-                <Text style={styles.chapterName}>{item.name}</Text>
-                <Text style={styles.subjectTag}>
+                <Text style={[styles.chapterName, { color: colors.text }]}>{item.name}</Text>
+                <Text style={[styles.subjectTag, { color: colors.textSecondary }]}>
                   {subjectLabel[item.subject] || item.subject}
                 </Text>
               </View>
-              <View style={styles.countBadge}>
+              <View style={[styles.countBadge, { backgroundColor: colors.accent }]}>
                 <Text style={styles.countText}>{count}</Text>
               </View>
             </TouchableOpacity>
@@ -86,10 +94,8 @@ export default function HomeScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
   },
   header: {
-    backgroundColor: colors.primary,
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.xl,
     paddingBottom: spacing.lg,
@@ -106,7 +112,7 @@ const styles = StyleSheet.create({
   headerBtn: {
     backgroundColor: 'rgba(255,255,255,0.2)',
     borderRadius: 8,
-    paddingHorizontal: spacing.md,
+    paddingHorizontal: spacing.sm + 2,
     paddingVertical: spacing.sm,
   },
   headerBtnText: {
@@ -132,7 +138,6 @@ const styles = StyleSheet.create({
     padding: spacing.md,
   },
   card: {
-    backgroundColor: colors.surface,
     borderRadius: 12,
     padding: spacing.lg,
     marginBottom: spacing.sm,
@@ -151,15 +156,12 @@ const styles = StyleSheet.create({
   chapterName: {
     fontSize: fontSize.lg,
     fontWeight: '600',
-    color: colors.text,
   },
   subjectTag: {
     fontSize: fontSize.sm,
-    color: colors.textSecondary,
     marginTop: spacing.xs,
   },
   countBadge: {
-    backgroundColor: colors.accent,
     borderRadius: 20,
     width: 40,
     height: 40,
