@@ -23,5 +23,6 @@ export type RootStackParamList = {
   Home: undefined;
   ChapterDetail: { chapterId: string; chapterName: string };
   FormulaDetail: { formulaId: string };
+  Search: undefined;
   Bookmarks: undefined;
 };

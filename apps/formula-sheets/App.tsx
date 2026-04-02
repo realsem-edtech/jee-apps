@@ -5,6 +5,7 @@ import { RootStackParamList } from './src/types';
 import HomeScreen from './src/screens/HomeScreen';
 import ChapterDetailScreen from './src/screens/ChapterDetailScreen';
 import FormulaDetailScreen from './src/screens/FormulaDetailScreen';
+import SearchScreen from './src/screens/SearchScreen';
 import BookmarksScreen from './src/screens/BookmarksScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -38,6 +39,13 @@ export default function App() {
           component={FormulaDetailScreen}
           options={{
             title: 'Formula',
+          }}
+        />
+        <Stack.Screen
+          name="Search"
+          component={SearchScreen}
+          options={{
+            title: 'Search Formulas',
           }}
         />
         <Stack.Screen

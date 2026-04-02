@@ -33,12 +33,20 @@ export default function HomeScreen({ navigation }: Props) {
             <Text style={styles.headerTitle}>JEE Formula Sheets</Text>
             <Text style={styles.headerSubtitle}>RealSem</Text>
           </View>
-          <TouchableOpacity
-            style={styles.bookmarkHeaderBtn}
-            onPress={() => navigation.navigate('Bookmarks')}
-          >
-            <Text style={styles.bookmarkHeaderIcon}>{'\u2606'}</Text>
-          </TouchableOpacity>
+          <View style={styles.headerActions}>
+            <TouchableOpacity
+              style={styles.headerBtn}
+              onPress={() => navigation.navigate('Search')}
+            >
+              <Text style={styles.headerBtnText}>Search</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.headerBtn}
+              onPress={() => navigation.navigate('Bookmarks')}
+            >
+              <Text style={styles.headerBtnIcon}>{'\u2606'}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       <FlatList
@@ -91,13 +99,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  bookmarkHeaderBtn: {
+  headerActions: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  headerBtn: {
     backgroundColor: 'rgba(255,255,255,0.2)',
     borderRadius: 8,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
   },
-  bookmarkHeaderIcon: {
+  headerBtnText: {
+    color: '#FFFFFF',
+    fontSize: fontSize.md,
+    fontWeight: '600',
+  },
+  headerBtnIcon: {
     color: '#FFFFFF',
     fontSize: 22,
   },
