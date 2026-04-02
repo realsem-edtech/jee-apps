@@ -13,6 +13,7 @@ import { RootStackParamList } from '../types';
 import { getChapters, getFormulaCountByChapter } from '../data/contentLayer';
 import { useTheme } from '../utils/ThemeContext';
 import { spacing, fontSize } from '../utils/theme';
+import AdBanner from '../components/AdBanner';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -87,6 +88,7 @@ export default function HomeScreen({ navigation }: Props) {
           );
         }}
       />
+      <AdBanner />
     </SafeAreaView>
   );
 }
