@@ -3,8 +3,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const BOOKMARKS_KEY = 'realsem_bookmarks';
 
 export async function getBookmarks(): Promise<string[]> {
-  const data = await AsyncStorage.getItem(BOOKMARKS_KEY);
-  return data ? JSON.parse(data) : [];
+  try {
+    const data = await AsyncStorage.getItem(BOOKMARKS_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
 }
 
 export async function addBookmark(formulaId: string): Promise<void> {
