@@ -13,6 +13,7 @@ import { RootStackParamList } from '../types';
 import { getFormulaById } from '../data/contentLayer';
 import { isBookmarked, toggleBookmark } from '../utils/bookmarks';
 import { colors, spacing, fontSize } from '../utils/theme';
+import { trackFormulaViewed, trackBookmarkToggled } from '../utils/analytics';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
 
@@ -23,11 +24,13 @@ export default function FormulaDetailScreen({ route }: Props) {
 
   useEffect(() => {
     isBookmarked(formulaId).then(setBookmarked);
+    if (formula) trackFormulaViewed(formula.name);
   }, [formulaId]);
 
   async function handleToggleBookmark() {
     const newState = await toggleBookmark(formulaId);
     setBookmarked(newState);
+    if (formula) trackBookmarkToggled(formula.name, newState ? 'add' : 'remove');
   }
 
   if (!formula) {

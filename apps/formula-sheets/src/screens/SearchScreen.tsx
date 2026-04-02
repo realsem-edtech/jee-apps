@@ -12,6 +12,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, Formula } from '../types';
 import { searchFormulas } from '../data/contentLayer';
 import { colors, spacing, fontSize } from '../utils/theme';
+import { trackSearchPerformed } from '../utils/analytics';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Search'>;
 
@@ -22,7 +23,9 @@ export default function SearchScreen({ navigation }: Props) {
   const handleSearch = useCallback((text: string) => {
     setQuery(text);
     if (text.trim().length >= 2) {
-      setResults(searchFormulas(text));
+      const found = searchFormulas(text);
+      setResults(found);
+      trackSearchPerformed(text);
     } else {
       setResults([]);
     }

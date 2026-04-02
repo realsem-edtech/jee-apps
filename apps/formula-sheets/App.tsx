@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './src/types';
@@ -9,6 +9,7 @@ import FormulaDetailScreen from './src/screens/FormulaDetailScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import BookmarksScreen from './src/screens/BookmarksScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import { initAnalytics, trackAppOpened } from './src/utils/analytics';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -85,6 +86,10 @@ function AppNavigator() {
 }
 
 export default function App() {
+  useEffect(() => {
+    initAnalytics().then(() => trackAppOpened());
+  }, []);
+
   return (
     <ThemeProvider>
       <AppNavigator />
