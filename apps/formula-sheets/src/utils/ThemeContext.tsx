@@ -59,18 +59,19 @@ const ThemeContext = createContext<ThemeContextType>({
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const systemScheme = useColorScheme();
   const [preference, setPreferenceState] = useState<ThemePreference>('system');
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem(THEME_KEY).then((saved) => {
       if (saved === 'light' || saved === 'dark' || saved === 'system') {
         setPreferenceState(saved);
       }
-    });
+    }).catch(() => {}).finally(() => setHydrated(true));
   }, []);
 
   function setPreference(pref: ThemePreference) {
     setPreferenceState(pref);
-    AsyncStorage.setItem(THEME_KEY, pref);
+    AsyncStorage.setItem(THEME_KEY, pref).catch(() => {});
   }
 
   const isDark =
