@@ -1,0 +1,148 @@
+import { Formula } from '../../types';
+
+export const someBasicConceptsFormulas: Formula[] = [
+  {
+    id: 'mole-concept',
+    chapterId: 'some-basic-concepts',
+    name: 'Mole Concept',
+    equation: 'n = \\frac{W}{M}',
+    contentType: 'latex',
+    variables: {
+      'n': 'Number of moles',
+      'W': 'Given mass of substance (g)',
+      'M': 'Molar mass (g/mol)',
+    },
+    useCases: [
+      'Finding number of moles from given mass',
+      'Converting between mass and moles in stoichiometry',
+      'Calculating reagent quantities for reactions',
+    ],
+    tags: ['mole concept', 'stoichiometry', 'molar mass'],
+  },
+  {
+    id: 'number-of-particles',
+    chapterId: 'some-basic-concepts',
+    name: 'Number of Particles',
+    equation: 'N = n \\times N_A',
+    contentType: 'latex',
+    variables: {
+      'N': 'Number of particles (atoms, molecules, ions)',
+      'n': 'Number of moles',
+      'N_A': 'Avogadro\'s number (6.022 × 10²³)',
+    },
+    useCases: [
+      'Finding total number of atoms or molecules in a sample',
+      'Converting moles to particle count',
+      'Calculating number of atoms in a given mass of element',
+    ],
+    tags: ['mole concept', 'avogadro', 'particles'],
+  },
+  {
+    id: 'molarity',
+    chapterId: 'some-basic-concepts',
+    name: 'Molarity',
+    equation: 'M = \\frac{n}{V}',
+    contentType: 'latex',
+    variables: {
+      'M': 'Molarity (mol/L)',
+      'n': 'Number of moles of solute',
+      'V': 'Volume of solution in litres',
+    },
+    useCases: [
+      'Preparing a solution of known concentration',
+      'Dilution calculations (M₁V₁ = M₂V₂)',
+      'Stoichiometric calculations in solution chemistry',
+    ],
+    tags: ['molarity', 'concentration', 'solutions'],
+  },
+  {
+    id: 'molality',
+    chapterId: 'some-basic-concepts',
+    name: 'Molality',
+    equation: 'm = \\frac{n_{solute}}{W_{solvent}(kg)}',
+    contentType: 'latex',
+    variables: {
+      'm': 'Molality (mol/kg)',
+      'n_{solute}': 'Number of moles of solute',
+      'W_{solvent}': 'Mass of solvent in kg',
+    },
+    useCases: [
+      'Colligative property calculations (ΔTb, ΔTf)',
+      'When temperature-independent concentration is needed',
+      'Calculating boiling point elevation and freezing point depression',
+    ],
+    tags: ['molality', 'concentration', 'colligative properties'],
+  },
+  {
+    id: 'mass-percent',
+    chapterId: 'some-basic-concepts',
+    name: 'Mass Percentage',
+    equation: '\\text{Mass \\%} = \\frac{W_{solute}}{W_{solution}} \\times 100',
+    contentType: 'latex',
+    variables: {
+      '\\text{Mass \\%}': 'Mass percentage of solute',
+      'W_{solute}': 'Mass of solute',
+      'W_{solution}': 'Total mass of solution',
+    },
+    useCases: [
+      'Expressing concentration of commercial solutions (e.g., 36% HCl)',
+      'Converting between mass percent and molarity',
+      'Quality control in industrial chemistry',
+    ],
+    tags: ['concentration', 'mass percent', 'solutions'],
+  },
+  {
+    id: 'empirical-formula',
+    chapterId: 'some-basic-concepts',
+    name: 'Empirical Formula Calculation',
+    equation: '\\text{Molecular Formula} = n \\times \\text{Empirical Formula}',
+    contentType: 'latex',
+    variables: {
+      'n': 'Ratio of molecular mass to empirical formula mass',
+      '\\text{Molecular Formula}': 'Actual formula of compound',
+      '\\text{Empirical Formula}': 'Simplest whole number ratio of atoms',
+    },
+    useCases: [
+      'Determining molecular formula from percentage composition',
+      'Converting empirical formula to molecular formula using molar mass',
+      'Combustion analysis calculations',
+    ],
+    tags: ['empirical formula', 'molecular formula', 'stoichiometry'],
+  },
+  {
+    id: 'percentage-yield',
+    chapterId: 'some-basic-concepts',
+    name: 'Percentage Yield',
+    equation: '\\text{\\% Yield} = \\frac{\\text{Actual Yield}}{\\text{Theoretical Yield}} \\times 100',
+    contentType: 'latex',
+    variables: {
+      '\\text{\\% Yield}': 'Percentage yield of reaction',
+      '\\text{Actual Yield}': 'Amount of product actually obtained',
+      '\\text{Theoretical Yield}': 'Maximum possible product from stoichiometry',
+    },
+    useCases: [
+      'Evaluating efficiency of a chemical reaction',
+      'Industrial process optimization',
+      'Comparing expected vs actual product in lab experiments',
+    ],
+    tags: ['yield', 'limiting reagent', 'stoichiometry'],
+  },
+  {
+    id: 'equivalent-weight',
+    chapterId: 'some-basic-concepts',
+    name: 'Equivalent Weight',
+    equation: 'E = \\frac{M}{n\\text{-factor}}',
+    contentType: 'latex',
+    variables: {
+      'E': 'Equivalent weight',
+      'M': 'Molar mass',
+      'n\\text{-factor}': 'Number of H⁺/OH⁻/electrons exchanged per formula unit',
+    },
+    useCases: [
+      'Normality calculations (N = n-factor × M)',
+      'Titration calculations using equivalents',
+      'Redox reaction stoichiometry',
+    ],
+    tags: ['equivalent weight', 'normality', 'n-factor'],
+  },
+];

@@ -1,0 +1,132 @@
+import { Formula } from '../../types';
+
+export const solutionsFormulas: Formula[] = [
+  {
+    id: 'raoults-law',
+    chapterId: 'solutions',
+    name: "Raoult's Law",
+    equation: 'P_A = x_A \\cdot P_A^\\circ',
+    contentType: 'latex',
+    variables: {
+      'P_A': 'Partial vapor pressure of component A in solution',
+      'x_A': 'Mole fraction of A in solution',
+      'P_A^\\circ': 'Vapor pressure of pure A',
+    },
+    useCases: [
+      'Calculating vapor pressure of ideal solutions',
+      'Determining vapor pressure lowering by solute',
+      'Basis for all colligative property derivations',
+    ],
+    tags: ['solutions', 'raoult', 'vapor pressure'],
+  },
+  {
+    id: 'relative-lowering-vp',
+    chapterId: 'solutions',
+    name: 'Relative Lowering of Vapor Pressure',
+    equation: '\\frac{P^\\circ - P_s}{P^\\circ} = x_{solute} = \\frac{n_2}{n_1 + n_2}',
+    contentType: 'latex',
+    variables: {
+      'P^\\circ': 'Vapor pressure of pure solvent',
+      'P_s': 'Vapor pressure of solution',
+      'x_{solute}': 'Mole fraction of solute',
+    },
+    useCases: [
+      'Determining molar mass of non-volatile solute',
+      'Colligative property — depends on number of solute particles',
+      'First colligative property to derive others',
+    ],
+    tags: ['solutions', 'colligative', 'vapor pressure lowering'],
+  },
+  {
+    id: 'boiling-point-elevation',
+    chapterId: 'solutions',
+    name: 'Boiling Point Elevation',
+    equation: '\\Delta T_b = i \\cdot K_b \\cdot m',
+    contentType: 'latex',
+    variables: {
+      '\\Delta T_b': 'Elevation in boiling point',
+      'i': "Van't Hoff factor",
+      'K_b': 'Ebullioscopic constant (K·kg/mol)',
+      'm': 'Molality of solution',
+    },
+    useCases: [
+      'Determining molar mass of solute from ΔTb',
+      'Calculating boiling point of antifreeze solutions',
+      'i > 1 for electrolytes (accounts for dissociation)',
+    ],
+    tags: ['solutions', 'colligative', 'boiling point elevation'],
+  },
+  {
+    id: 'freezing-point-depression',
+    chapterId: 'solutions',
+    name: 'Freezing Point Depression',
+    equation: '\\Delta T_f = i \\cdot K_f \\cdot m',
+    contentType: 'latex',
+    variables: {
+      '\\Delta T_f': 'Depression in freezing point',
+      'i': "Van't Hoff factor",
+      'K_f': 'Cryoscopic constant (K·kg/mol)',
+      'm': 'Molality of solution',
+    },
+    useCases: [
+      'Determining molar mass from freezing point data',
+      'Explaining why salt is spread on icy roads',
+      'Most accurate colligative method for molar mass determination',
+    ],
+    tags: ['solutions', 'colligative', 'freezing point depression'],
+  },
+  {
+    id: 'osmotic-pressure',
+    chapterId: 'solutions',
+    name: 'Osmotic Pressure',
+    equation: '\\pi = iCRT',
+    contentType: 'latex',
+    variables: {
+      '\\pi': 'Osmotic pressure',
+      'i': "Van't Hoff factor",
+      'C': 'Molar concentration (mol/L)',
+      'R': 'Gas constant (0.0821 L·atm/mol·K)',
+      'T': 'Temperature in Kelvin',
+    },
+    useCases: [
+      'Determining molar mass of polymers and biomolecules',
+      'Most sensitive colligative property (measurable for dilute solutions)',
+      'Reverse osmosis for water purification',
+    ],
+    tags: ['solutions', 'colligative', 'osmotic pressure'],
+  },
+  {
+    id: 'vant-hoff-factor',
+    chapterId: 'solutions',
+    name: "Van't Hoff Factor",
+    equation: 'i = \\frac{\\text{observed colligative property}}{\\text{calculated colligative property}}',
+    contentType: 'latex',
+    variables: {
+      'i': "Van't Hoff factor",
+    },
+    useCases: [
+      'i > 1 for electrolytes (dissociation increases particles)',
+      'i < 1 for association (dimerization decreases particles)',
+      'i = 1 for non-electrolytes (urea, glucose)',
+    ],
+    tags: ['solutions', 'vant hoff factor', 'colligative'],
+  },
+  {
+    id: 'henrys-law',
+    chapterId: 'solutions',
+    name: "Henry's Law",
+    equation: 'P = K_H \\cdot x',
+    contentType: 'latex',
+    variables: {
+      'P': 'Partial pressure of gas above solution',
+      'K_H': 'Henry\'s law constant',
+      'x': 'Mole fraction of gas in solution',
+    },
+    useCases: [
+      'Calculating solubility of gases in liquids',
+      'Explaining why soda fizzes when opened (pressure drops)',
+      'Deep sea diving — nitrogen narcosis (Bends)',
+    ],
+    tags: ['solutions', 'henry', 'gas solubility'],
+  },
+];
