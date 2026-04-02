@@ -24,4 +24,5 @@ export type RootStackParamList = {
   ChapterDetail: { chapterId: string; chapterName: string };
   FormulaDetail: { formulaId: string };
   Search: undefined;
+  Bookmarks: undefined;
 };
