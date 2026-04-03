@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import MathView from 'react-native-math-view';
 import { RootStackParamList } from '../types';
 import { getFormulaById } from '../data/contentLayer';
 import { isBookmarked, toggleBookmark } from '../utils/bookmarks';
 import { colors, spacing, fontSize } from '../utils/theme';
 import { trackFormulaViewed, trackBookmarkToggled } from '../utils/analytics';
+import LatexRenderer from '../components/LatexRenderer';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
 
@@ -44,28 +44,24 @@ export default function FormulaDetailScreen({ route }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.titleRow}>
-          <Text style={[styles.formulaName, { flex: 1 }]}>{formula.name}</Text>
-          <TouchableOpacity onPress={handleToggleBookmark} style={styles.bookmarkButton}>
-            <Text style={styles.bookmarkIcon}>{bookmarked ? '\u2605' : '\u2606'}</Text>
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.titleRow}>
+          <Text style={styles.formulaName}>{formula.name}  </Text>
+          <Text style={styles.bookmarkIcon} onPress={handleToggleBookmark}>
+            {bookmarked ? '\u2605' : '\u2606'}
+          </Text>
+        </Text>
 
         <View style={styles.equationCard}>
-          <MathView
-            math={formula.equation}
-            style={styles.equation}
-          />
+          <LatexRenderer math={formula.equation} color={colors.text} />
         </View>
 
         <Text style={styles.sectionTitle}>Variables</Text>
         <View style={styles.section}>
           {Object.entries(formula.variables).map(([symbol, description]) => (
             <View key={symbol} style={styles.variableRow}>
-              <MathView
-                math={symbol}
-                style={styles.variableSymbol}
-              />
+              <View style={styles.variableSymbolWrap}>
+                <LatexRenderer math={symbol} color={colors.text} fontSize={16} />
+              </View>
               <Text style={styles.variableDesc}>{description}</Text>
             </View>
           ))}
@@ -109,8 +105,6 @@ const styles = StyleSheet.create({
     marginTop: spacing.xl,
   },
   titleRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
     marginBottom: spacing.lg,
   },
   formulaName: {
@@ -118,19 +112,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.text,
   },
-  bookmarkButton: {
-    padding: spacing.sm,
-    marginLeft: spacing.sm,
-  },
   bookmarkIcon: {
-    fontSize: 28,
+    fontSize: fontSize.xl,
     color: colors.accent,
   },
   equationCard: {
     backgroundColor: colors.surface,
     borderRadius: 12,
-    padding: spacing.lg,
-    alignItems: 'center',
+    padding: spacing.sm,
     marginBottom: spacing.lg,
     borderLeftWidth: 4,
     borderLeftColor: colors.primary,
@@ -139,9 +128,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
-  },
-  equation: {
-    color: colors.text,
   },
   sectionTitle: {
     fontSize: fontSize.lg,
@@ -163,8 +149,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
-  variableSymbol: {
-    color: colors.text,
+  variableSymbolWrap: {
+    width: 80,
+    height: 40,
     marginRight: spacing.sm,
   },
   variableDesc: {

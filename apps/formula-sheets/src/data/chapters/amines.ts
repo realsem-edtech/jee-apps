@@ -40,7 +40,7 @@ export const aminesFormulas: Formula[] = [
     id: 'hinsberg-test',
     chapterId: 'amines',
     name: 'Hinsberg Test',
-    equation: 'RNH_2 + C_6H_5SO_2Cl \\xrightarrow{NaOH} C_6H_5SO_2NHR \\quad (\\text{soluble in NaOH})',
+    equation: 'RNH_2 + C_6H_5SO_2Cl \\xrightarrow{NaOH} C_6H_5SO_2NHR',
     contentType: 'latex',
     variables: {
       'C_6H_5SO_2Cl': 'Benzenesulfonyl chloride (Hinsberg reagent)',

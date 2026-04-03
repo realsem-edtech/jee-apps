@@ -31,31 +31,30 @@ export default function HomeScreen({ navigation }: Props) {
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       <View style={[styles.header, { backgroundColor: colors.primary }]}>
-        <View style={styles.headerRow}>
-          <View>
-            <Text style={styles.headerTitle}>JEE Formula Sheets</Text>
-            <Text style={styles.headerSubtitle}>RealSem</Text>
-          </View>
-          <View style={styles.headerActions}>
-            <TouchableOpacity
-              style={styles.headerBtn}
-              onPress={() => navigation.navigate('Search')}
-            >
-              <Text style={styles.headerBtnText}>Search</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.headerBtn}
-              onPress={() => navigation.navigate('Bookmarks')}
-            >
-              <Text style={styles.headerBtnIcon}>{'\u2606'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.headerBtn}
-              onPress={() => navigation.navigate('Settings')}
-            >
-              <Text style={styles.headerBtnIcon}>{'\u2699'}</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.headerTop}>
+          <Text style={styles.headerTitle}>JEE Formula Sheets</Text>
+          <Text style={styles.headerSubtitle}>RealSem</Text>
+        </View>
+        <View style={styles.headerActions}>
+          <TouchableOpacity
+            style={styles.searchBtn}
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('Search')}
+          >
+            <Text style={styles.searchBtnText}>{'\u{1F50D}'} Search formulas...</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.iconBtn}
+            onPress={() => navigation.navigate('Bookmarks')}
+          >
+            <Text style={styles.iconBtnText}>{'\u2606'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.iconBtn}
+            onPress={() => navigation.navigate('Settings')}
+          >
+            <Text style={styles.iconBtnText}>{'\u2699'}</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <FlatList
@@ -98,43 +97,50 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: spacing.md,
     paddingTop: spacing.xl,
-    paddingBottom: spacing.lg,
+    paddingBottom: spacing.md,
   },
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  headerActions: {
-    flexDirection: 'row',
-    gap: spacing.sm,
-  },
-  headerBtn: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    borderRadius: 8,
-    paddingHorizontal: spacing.sm + 2,
-    paddingVertical: spacing.sm,
-  },
-  headerBtnText: {
-    color: '#FFFFFF',
-    fontSize: fontSize.md,
-    fontWeight: '600',
-  },
-  headerBtnIcon: {
-    color: '#FFFFFF',
-    fontSize: 22,
+  headerTop: {
+    marginBottom: spacing.md,
   },
   headerTitle: {
-    fontSize: fontSize.xxl,
+    fontSize: fontSize.xl,
     fontWeight: '700',
     color: '#FFFFFF',
   },
   headerSubtitle: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
+    color: 'rgba(255,255,255,0.6)',
+    marginTop: 2,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  searchBtn: {
+    flex: 1,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 10,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm + 2,
+  },
+  searchBtnText: {
     color: 'rgba(255,255,255,0.7)',
-    marginTop: spacing.xs,
+    fontSize: fontSize.sm,
+  },
+  iconBtn: {
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 10,
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconBtnText: {
+    color: '#FFFFFF',
+    fontSize: 20,
   },
   list: {
     padding: spacing.md,
